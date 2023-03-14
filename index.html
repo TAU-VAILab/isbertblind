@@ -1,93 +1,483 @@
-
-
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
-        <title>Is BERT Blind?</title>
+    <title>Is BERT Blind?</title>
 
-		<style>
-			.teaser {
-				position: relative;
-				display: inline;
-			}
-			.teaser .img-top {
-				position: absolute;
-				top: 0;
-				left: 0;
-				opacity: 0;
-			}
-			.teaser:hover .img-top { opacity: 1; }
-            .tab { margin-left: 40px; }
-		</style>
-    </head>
+    <style>
+        p {
+            line-height: 1.2;
+        }
 
-    <body class="container" style="max-width:840px">
+        .justify {
+            text-align: justify;
+        }
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        /* .abstract {
+            line-height: 1;
+        } */
 
-        <!-- heading -->
-        <div>
-            <!-- title -->
-            <div class='row mt-5 mb-3'>
-                <div class='col text-center'>
-                    <p class="h2 font-weight-normal">Is BERT Blind?</p>
-					<p class="h2 font-weight-normal">Exploring the Effect of Vision-and-Language Pretraining on Visual Language Understanding</p>
+        .teaser {
+            position: relative;
+            display: inline;
+        }
+
+        .teaser .img-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .teaser:hover .img-top {
+            opacity: 1;
+        }
+
+        .tab {
+            margin-left: 40px;
+        }
+
+        .card {
+            border: 0px;
+            margin: 5px;
+        }
+
+        .img-teaser {
+            height: 150px;
+        }
+
+        .emph {
+            font-weight: bold;
+        }
+
+        .emph2 {
+            font-style: italic;
+        }
+
+        .question {
+            font-weight: bold;
+        }
+
+        .carousel {
+            width: 640px;
+            height: 370px;
+        }
+
+        .carousel-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .carousel-caption {
+            color: black;
+            position: relative;
+            left: auto;
+            right: auto;
+            margin: 10px;
+
+        }
+
+        .carousel-item {
+            margin: auto;
+        }
+
+        .carousel-control-next,
+        .carousel-control-prev,
+        .carousel-indicators {
+            filter: invert(100%);
+        }
+
+        .carousel-indicators {
+            /* margin: 10px; */
+        }
+
+        .paper-snapshot {
+            box-shadow: 10px 10px 5px grey;
+        }
+
+        .stroop-img {
+            /* box-shadow: 10px 10px 5px grey; */
+            border: 1px solid grey;
+            margin: 20px;
+            width: 95%
+        }
+
+        @media screen and (min-width: 800px) {
+
+            .paper-snapshot {
+                position: relative;
+                top: 40px;
+                left: 10px;
+            }
+
+            .stroop-img {
+                position: relative;
+                top: 15px;
+            }
+        }
+
+        .paper-snapshot-link {
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-img-top {
+            /* width: 100%; */
+            /* height: 15vw; */
+            object-fit: contain;
+        }
+
+        .ncd-img {
+            height: 100px;
+            /* width: auto; */
+        }
+
+        .ncd-card-body {
+            /* text-align: center; */
+            font-size: 18px;
+            font-family: 'Lucida Console', monospace;
+            position: relative;
+            left: 20px;
+        }
+
+        .colorbox {
+            width: 15%;
+            height: 15%;
+            border: 2px solid black;
+            margin: 5px;
+        }
+
+        .ncd-card-first {
+            position: relative;
+            left: 40px;
+            top: 5px;
+        }
+    </style>
+</head>
+
+<body class="container" style="max-width:840px">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+    <!-- heading -->
+    <div>
+
+        <!-- title -->
+        <div class='row mt-5 mb-3'>
+            <div class='col text-center'>
+                <p class="h2 font-weight-normal">Is BERT Blind?</p>
+                <p class="h2 font-weight-normal">Exploring the Effect of Vision-and-Language Pretraining on Visual
+                    Language Understanding</p>
+            </div>
+        </div>
+
+        <!-- authors -->
+        <div class="col text-center h6 font-weight-bold mb-2 ">
+            <span><a class="col-md-4 col-xs-6 pb-2" href="https://morrisalp.github.io/">Morris Alper *</a></span>
+            <span><a class="col-md-4 col-xs-6 pb-2" href="https://www.linkedin.com/in/michael-fiman/">Michael Fiman
+                    *</a></span>
+            <span><a class="col-md-4 col-xs-6 pb-2" href="https://www.elor.sites.tau.ac.il/">Hadar
+                    Averbuch-Elor</a></span>
+        </div>
+
+        <!-- affiliations -->
+        <div class='row mb-1'>
+            <div class='col text-center'>
+                <p class="h6">
+                    <a href="https://english.tau.ac.il/"><span>Tel Aviv University</span></a>
+                </p>
+            </div>
+        </div>
+
+        <!-- venue -->
+        <div class='row mb-2'>
+            <div class='col text-center'>
+                <p class="h6">
+                    CVPR 2023
+                    <br>
+                    * Equal Contribution
+                </p>
+            </div>
+        </div>
+
+        <!-- links -->
+        <div class='row mb-4'>
+            <div class='col text-center'>
+                <a href="https://arxiv.org/abs/2303.12513" target="_blank" class="btn btn-outline-primary" role="button">
+                    <i class="ai ai-arxiv"></i>
+                    arXiv
+                </a>
+                <a href="https://github.com/TAU-VAILab/isbertblind" target="_blank" class="btn btn-outline-primary"
+                    role="button">
+                    <i class="fa fa-github"></i>
+                    Code and data
+                </a>
+                <!-- <a href="#" target="_blank" class="btn btn-outline-primary" role="button">
+                    <i class="fa fa-database"></i>
+                    Dataset (TBD)
+                </a> -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- teaser -->
+
+    <div class='row justify-content-center'>
+        <div id="carouselExampleIndicators" class="carousel" data-ride="carousel" data-interval="false">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="carousel-img" src="assets/teaser/present_lowres.jpeg" alt="picture of presents">
+                    <div class="carousel-caption">
+                        <h5>Alex gave Riley a <span class="emph">present</span>.</h5>
+                        <p>How concrete is the word <span class="emph">present</span>?</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-img" src="assets/teaser/ultimatum_lowres.jpeg"
+                        alt="picture of concepts related to an ultimatum">
+                    <div class="carousel-caption">
+                        <h5>Alex gave Riley an <span class="emph">ultimatum</span>.</h5>
+                        <p>How concrete is the word <span class="emph">ultimatum</span>?</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-img" src="assets/teaser/ocean_lowres.jpeg" alt="picture of the ocean">
+                    <div class="carousel-caption">
+                        <h5>The ocean is ___‑colored.</h5>
+                        <p>What word should be inserted in the blank?</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-img" src="assets/teaser/chip_lowres.jpeg"
+                        alt="picture of a hand dipping a corn chip">
+                    <div class="carousel-caption">
+                        <h5>A corn chip is ___‑shaped.</h5>
+                        <p>What word should be inserted in the blank?</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- authors -->
-            <div class="col text-center h6 font-weight-bold mb-2 ">
-                <span><a class="col-md-4 col-xs-6 pb-2" href="https://morrisalp.github.io/">Morris Alper *</a></span>
-				<span><a class="col-md-4 col-xs-6 pb-2" href="https://www.linkedin.com/in/michael-fiman/">Michael Fiman *</a></span>
-                <span><a class="col-md-4 col-xs-6 pb-2" href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a></span>
-            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
 
-            <!-- affiliations -->
-            <div class='row mb-1'>
-                <div class='col text-center'>
-                    <p class="h6">
-                        <a href="https://english.tau.ac.il/"><span>Tel Aviv University</span></a>
-                    </p>
+        </div>
+    </div>
+
+    <div class='col-md-12 col-sm-12 col-xs-12 align-middle mt-1'>
+        <p class="text-break justify">
+            Although the questions above are asking about the text alone, solving these tasks (concreteness
+            prediction, color and shape association prediction) requires visual imagination.
+        </p>
+    </div>
+    <div class='col-md-12 col-sm-12 col-xs-12 align-middle mt-1'>
+        <p class='h6 font-weight-bold justify'>
+            In this work, we investigate whether vision-and-language pretraining can improve performance on text-only
+            tasks involving visual reasoning. We propose a suite of <emph>visual language understanding</emph> tasks for
+            probing the visual reasoning capabilities of text encoder models, and show that multimodally trained text
+            encoders
+            outperform unimodally trained encoders such as BERT on these tasks.
+        </p>
+    </div>
+    </div>
+
+    </div>
+
+
+
+    <!-- Paper section -->
+    <div>
+        <hr>
+        <div class="row">
+            <div class='col-md-12 col-sm-12 col-xs-12 align-middle mt-1'>
+                <p class='h4 font-weight-bold'>Abstract</p>
+                <p class='abstract justify'>
+                    Most humans use visual imagination to understand and reason about language, but models such as BERT
+                    reason about language using knowledge acquired during text-only pretraining. In this work, we
+                    investigate whether vision-and-language pretraining can improve performance on text-only tasks that
+                    involve implicit visual reasoning, focusing primarily on zero-shot probing methods. We propose a
+                    suite of visual language understanding (VLU) tasks for probing the visual reasoning abilities of
+                    text encoder models, as well as various non-visual natural language understanding (NLU) tasks for
+                    comparison. We also contribute a novel zero-shot knowledge probing method, Stroop probing, for
+                    applying models such as CLIP to text-only tasks without needing a prediction head such as the masked
+                    language modelling head of models like BERT. We show that SOTA multimodally trained text encoders
+                    outperform unimodally trained text encoders on the VLU tasks while being underperformed by them on
+                    the NLU tasks, lending new context to previously mixed results regarding the NLU capabilities of
+                    multimodal models. We conclude that exposure to images during pretraining affords inherent visual
+                    reasoning knowledge that is reflected in language-only tasks that require implicit visual reasoning.
+                    Our findings bear importance in the broader context of multimodal learning, providing principled
+                    guidelines for the choice of text encoders used in such contexts.
+                </p>
+            </div>
+            <!-- <div class='col-md-3 col-sm-3 col-xs-12 text-center'>
+                <div class="row mt-2">
+                    <a href="#" class="paper-snapshot-link">
+                        <img src="assets/paper-snapshot.jpeg" alt="paper-snapshot" class="img-thumbnail paper-snapshot"
+                            width="80%">
+                    </a>
                 </div>
-            </div>
+            </div> -->
+        </div>
+    </div>
 
-            <!-- venue -->
-            <div class='row mb-2'>
-                <div class='col text-center'>
-                    <p class="h6">
-                        CVPR 2023
-                        <br>
-                        * Equal Contribution
-                    </p>
+    <div>
+        <hr>
+        <div class="row">
+            <div class='col-md-9 col-sm-9 col-xs-12 justify'>
+                <p class='h4 font-weight-bold'>Stroop Probing</p>
+                <p>
+                    We propose a new zero-shot probing method for multimodal text encoders such as that of CLIP, taking
+                    inspiration from the psychological phenomenon known as the <a
+                        href="https://en.wikipedia.org/wiki/Stroop_effect">Stroop effect</a>.
+                </p>
+                <p>
+                    <b>Try it yourself!</b> Look at the colors listed in the boxes, and try to read out loud <b>the
+                        color in which the text is printed</b> (not the color that is written out). Which set of colors
+                    is harder to read out loud?
+                </p>
+
+                <p>
+                    Stroop probing uses this idea — that incongruent stimuli have an interference effect on the
+                    representation of their context — in order to probe models such as CLIP for knowledge without
+                    requiring a language modelling head.
+                </p>
+            </div>
+            <div class='col-md-3 col-sm-3 col-xs-12 text-center'>
+                <div class="row mt-2">
+                    <img src="assets/stroop/stroop1.png" alt="stroop effect example 1" class="img-thumbnail stroop-img"
+                        width="100%">
                 </div>
-            </div>
-
-            <!-- links -->
-            <div class='row mb-4'>
-                <div class='col text-center'>
-                    <a href="#" target="_blank" class="btn btn-outline-primary" role="button">
-                        <i class="ai ai-arxiv"></i>
-                        arXiv (TBD)
-                    </a>
-                    <a href="#" target="_blank" class="btn btn-outline-primary" role="button">
-                        <i class="fa fa-github"></i>
-                        Code (TBD)
-                    </a>
-                    <a href="#" target="_blank" class="btn btn-outline-primary" role="button">
-                        <i class="fa fa-database"></i>
-                        Dataset (TBD)
-                    </a>
+                <div class="row mt-2">
+                    <img src="assets/stroop/stroop3.png" alt="stroop effect example 2" class="img-thumbnail stroop-img"
+                        width="100%">
                 </div>
             </div>
         </div>
-        
-    </body>
+    </div>
+
+    <div>
+        <hr>
+        <div class="row">
+            <div class='col-md-12 col-sm-12 col-xs-12 justify'>
+                <p class='h4 font-weight-bold '>Sample Results</p>
+                <p>
+                    Compare the results of BERT-base with masked language modelling and CLIP with Stroop probing on the
+                    task of color association prediction. Note that the models receive only the name of the fruit or
+                    vegetable without the given image, shown for illustration purposes only.
+                </p>
+            </div>
+
+            <div class="card">
+                <img class="card-img-top ncd-img" src="assets/ncd/white.jpg" alt="white space">
+                <div class="card-body ncd-card-body ncd-card-first">
+                    <p class="card-text"><b>BERT:<br>CLIP:</b></p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img class="card-img-top ncd-img" src="assets/ncd/Broccoli.jpg" alt="broccoli">
+                <div class="card-body ncd-card-body">
+                    <p class="card-text"><img class="colorbox" src="assets/colors/green.jpeg">green<br><img
+                            class="colorbox" src="assets/colors/green.jpeg">green</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img-top ncd-img" src="assets/ncd/carrot.jpg" alt="carrot">
+                <div class="card-body ncd-card-body">
+                    <p class="card-text"><img class="colorbox" src="assets/colors/green.jpeg">green<br><img
+                            class="colorbox" src="assets/colors/orange.jpeg">orange</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img-top ncd-img" src="assets/ncd/Corn.jpg" alt="corn">
+                <div class="card-body ncd-card-body">
+                    <p class="card-text"><img class="colorbox" src="assets/colors/red.jpeg">red<br><img class="colorbox"
+                            src="assets/colors/yellow.jpeg">yellow</p>
+                </div>
+            </div>
+
+            <!-- <div class="card">
+                <img class="card-img-top ncd-img" src="assets/ncd/PG.jpg" alt="pomegranate">
+                <div class="card-body ncd-card-body">
+                    <p class="card-text"><img class="colorbox" src="assets/colors/red.jpeg">red<br><img class="colorbox" src="assets/colors/red.jpeg">red</p>
+                </div>
+            </div> -->
+
+            <div class="card">
+                <img class="card-img-top ncd-img" src="assets/ncd/potato.jpg" alt="potato">
+                <div class="card-body ncd-card-body">
+                    <p class="card-text"><img class="colorbox" src="assets/colors/white.jpeg">white<br><img
+                            class="colorbox" src="assets/colors/brown.jpeg">brown</p>
+                </div>
+            </div>
+
+            <div class='col-md-12 col-sm-12 col-xs-12 justify'>
+                <p class="emph2">
+                    In our work we examine additional visual understanding tasks including concreteness
+                    prediction and shape association prediction. We also evaluate NLU tasks that do not directly involve
+                    visual reasoning as baselines.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <hr>
+        <div class="row">
+            <div class='col-md-12 col-sm-12 col-xs-12'>
+                <p class='h4 font-weight-bold '>Acknowledgements</p>
+                <p>
+                    We thank Noriyuki Kojima and Gabriel Stanovsky for their helpful feedback.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <hr>
+        <div class="row">
+            <div class='col-md-12 col-sm-12 col-xs-12'>
+                <p class='h4 font-weight-bold '>Citation</p>
+                <pre><code>@InProceedings{alper2023:is-bert-blind,
+    author    = {Morris Alper and Michael Fiman and Hadar Averbuch-Elor},
+    title     = {Is BERT Blind? Exploring the Effect of Vision-and-Language Pretraining on Visual Language Understanding},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year      = {2023}
+}</code></pre>
+            </div>
+        </div>
+    </div>
+
+</body>
+
 </html>
