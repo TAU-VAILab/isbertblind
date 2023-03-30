@@ -32,7 +32,7 @@ from probing import CLIPStroopProbe
 
 clip_sp = CLIPStroopProbe('openai/clip-vit-base-patch32')
 scores = clip_sp.score_from_options(SENTENCE, COLORS, as_dict=True)
-# scores = {'red': 0.78190374, 'orange': 0.8250252, 'yellow': 0.8816596, 'green': 0.8156868, 
+# scores = 'red': 0.87503874, 'orange': 0.8977335, 'yellow': 0.94582725, 'green': 0.8791876, 'blue': 0.8688055, 'black': 0.8739696, 'white': 0.8991788, 'grey': 0.880877, 'brown': 0.89924145} 
 # 'blue': 0.79435384, 'black': 0.79852706, 'white': 0.83922243, 'grey': 0.81859416, 'brown': 0.8265251}
 
 print(f"{SENTENCE.replace('MASK', max(scores, key=scores.get))}")
