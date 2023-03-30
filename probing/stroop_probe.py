@@ -24,8 +24,9 @@ class StroopProbe(Probe, ABC):
         if "MASK" not in sentence:
             raise ValueError(f"the work MASK must appear within the given sentence, received: {sentence}")
 
+        base_sentence = sentence.replace("MASK", "")
         sentence_list = [sentence.replace("MASK", option) for option in options]
-        scores = self.score(sentence, sentence_list)
+        scores = self.score(base_sentence, sentence_list)
 
         return dict(zip(options, scores)) if as_dict else scores
 
