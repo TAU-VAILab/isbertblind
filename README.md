@@ -23,7 +23,7 @@ pip install -e ./isbertblind
 ```
 
 #### Probing
-An example for usage of Stroop probing:
+An example for usage of Stroop Probing:
 ```python
 COLORS = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'white', 'grey', 'brown']
 SENTENCE = 'A MASK colored banana'
@@ -68,7 +68,14 @@ Use the config file define experiment setup parameters, set of words to use as P
 
 This sort of task requires a csv file with the following columns: `["sentence","gt","options"]`. An example of a dataset for using this type of task, please see the `datasets/cbt_v_sample.csv` file.
 
-Note that since the Children’s Book Test (CBT) Dataset is not ours, we only show a sample of a few examples in this repository. 
+Note that since the Children’s Book Test (CBT) Dataset is not ours, we only show a sample of a few examples in this repository.
+
+#### Compare models on dataset
+To run the script defined by the config file, run the following command:
+```commandline
+python run_on_dataset.py path_to_config.json
+```
+Output per model and prompt and a summary of the experiment will be written to the output folder defined in the config file setup. 
 
 ## Datasets
 
