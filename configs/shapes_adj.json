@@ -3,7 +3,6 @@
     "experiment_name": "shapes_association_adj",
     "output_dir": "./output/",
     "dataset_path": "./datasets/shape_association_adj.csv",
-    "device": "cuda",
     "task": "choice"
   },
   "prompts" : [
@@ -23,98 +22,32 @@
       "model_type": "TEXT_MLM",
       "model_params" : {
         "model_name": "bert_base",
-        "model_pretrained": "bert-base-uncased"
-      }
-    },
-    {
-      "model_type": "TEXT_SP",
-      "model_params" : {
-        "model_name": "bert_base",
-        "model_pretrained": "bert-base-uncased"
+        "model_pretrained": "bert-base-uncased",
+        "device": "cpu"
       }
     },
     {
       "model_type": "TEXT_MLM",
       "model_params" : {
         "model_name": "bert_large",
-        "model_pretrained": "bert-large-uncased"
-      }
-    },
-    {
-      "model_type": "TEXT_SP",
-      "model_params" : {
-        "model_name": "bert_large",
-        "model_pretrained": "bert-large-uncased"
-      }
-    },
-    {
-      "model_type": "TEXT_MLM",
-      "model_params" : {
-        "model_name": "distil_bert",
-        "model_pretrained": "distilbert-base-uncased"
+        "model_pretrained": "bert-large-uncased",
+        "device": "cpu"
       }
     },
     {
       "model_type": "TEXT_MLM",
       "model_params" : {
         "model_name": "roberta_base",
-        "model_pretrained": "roberta-base"
-      }
-    },
-    {
-      "model_type": "TEXT_SP",
-      "model_params" : {
-        "model_name": "roberta_base",
-        "model_pretrained": "roberta-base"
+        "model_pretrained": "roberta-base",
+        "device": "cpu"
       }
     },
     {
       "model_type": "TEXT_MLM",
       "model_params" : {
         "model_name": "roberta_large",
-        "model_pretrained": "roberta-large"
-      }
-    },
-    {
-      "model_type": "TEXT_SP",
-      "model_params" : {
-        "model_name": "roberta_large",
-        "model_pretrained": "roberta-large"
-      }
-    },
-    {
-      "model_type": "TEXT_MLM",
-      "model_params" : {
-        "model_name": "distil_roberta",
-        "model_pretrained": "distilroberta-base"
-      }
-    },
-    {
-      "model_type": "TEXT_SP",
-      "model_params" : {
-        "model_name": "distil_roberta",
-        "model_pretrained": "distilroberta-base"
-      }
-    },
-    {
-      "model_type": "TEXT_SP",
-      "model_params" : {
-        "model_name": "ernie_base",
-        "model_pretrained": "nghuyong/ernie-2.0-base-en"
-      }
-    },
-    {
-      "model_type": "TEXT_SP",
-      "model_params" : {
-        "model_name": "ernie_large",
-        "model_pretrained": "nghuyong/ernie-2.0-large-en"
-      }
-    },
-    {
-      "model_type": "TEXT_SP",
-      "model_params" : {
-        "model_name": "sentence_transformers",
-        "model_pretrained": "sentence-transformers/all-MiniLM-L6-v2"
+        "model_pretrained": "roberta-large",
+        "device": "cpu"
       }
     },
     {

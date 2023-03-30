@@ -8,7 +8,7 @@ import pandas as pd
 from pandas import DataFrame, Series
 from torch import nn
 
-TASK = Literal["choice", "cloze", "regression"]
+TASK = Literal["choice", "cloze"]
 
 
 def get_nof_params(model: nn.Module) -> int:

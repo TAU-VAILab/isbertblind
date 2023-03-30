@@ -9,8 +9,8 @@ from probing.probe import Probe
 
 
 class MLMProbe(Probe, ABC):
-    def __init__(self, model_name: str, model_pretrained: str, device: torch.device = torch.device('cuda:0')):
-        super().__init__(model_name, model_pretrained, device)
+    def __init__(self, model_pretrained: str, device: torch.device = torch.device('cuda:0'), **kwargs):
+        super().__init__(model_pretrained, device, **kwargs)
         self.mask_token = self.model.tokenizer.mask_token
 
     def _build_model(self):

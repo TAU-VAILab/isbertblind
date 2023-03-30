@@ -9,8 +9,8 @@ from probing.stroop_probe import StroopProbe
 
 
 class CLIPStroopProbe(StroopProbe, ABC):
-    def __init__(self, model_name: str, model_pretrained: str, device: torch.device = torch.device('cuda')):
-        super().__init__(model_name, model_pretrained, device)
+    def __init__(self, model_pretrained: str, device: torch.device = torch.device('cuda'), **kwargs):
+        super().__init__(model_pretrained, device, **kwargs)
 
     def _build_model(self):
         self.model = CLIPModel.from_pretrained(self.model_pretrained).to(self.device)
@@ -31,8 +31,8 @@ class CLIPStroopProbe(StroopProbe, ABC):
 
 
 class FLAVAStroopProbe(StroopProbe, ABC):
-    def __init__(self, model_name: str, model_pretrained: str, device: torch.device = torch.device('cuda')):
-        super().__init__(model_name, model_pretrained, device)
+    def __init__(self, model_pretrained: str, device: torch.device = torch.device('cuda'), **kwargs):
+        super().__init__(model_pretrained, device, **kwargs)
 
     def _build_model(self):
         self.model = FlavaModel.from_pretrained(self.model_pretrained).to(self.device)

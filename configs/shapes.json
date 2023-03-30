@@ -3,7 +3,6 @@
     "experiment_name": "shapes_association",
     "output_dir": "./output/",
     "dataset_path": "./datasets/shape_association.csv",
-    "device": "cuda",
     "task": "choice"
   },
   "prompts" : [

@@ -5,8 +5,7 @@ import torch
 
 
 class Probe:
-    def __init__(self, model_name: str, model_pretrained: str, device: torch.device = torch.device('cuda')):
-        self.model_name = model_name
+    def __init__(self, model_pretrained: str, device: torch.device = torch.device('cuda'), **kwargs):
         self.model_pretrained = model_pretrained
         self.device = device
         self.model = None
