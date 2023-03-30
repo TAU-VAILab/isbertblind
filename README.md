@@ -8,7 +8,10 @@ For more information, see our project page at https://isbertblind.github.io.
 
 ## Code
 
-(Coming soon)
+###  Setting up environment
+```
+pip install -r requirements.txt
+```
 
 ## Datasets
 

@@ -1,0 +1,149 @@
+{
+  "setup_params": {
+    "experiment_name": "shapes_association_adj",
+    "output_dir": "./output/",
+    "dataset_path": "./datasets/shape_association_adj.csv",
+    "device": "cuda",
+    "task": "choice"
+  },
+  "prompts" : [
+    "a photo of a MASK shaped WORD",
+    "a photo of a MASK WORD",
+    "a photo of the MASK WORD",
+    "a MASK WORD",
+    "MASK WORD",
+    "an image of a MASK WORD",
+    "a WORD usually has a MASK shape",
+    "WORDs commonly have a MASK shape",
+    "the basic shape of a WORD is MASK",
+    "what is the shape of a WORD? MASK"
+  ],
+  "models": [
+    {
+      "model_type": "TEXT_MLM",
+      "model_params" : {
+        "model_name": "bert_base",
+        "model_pretrained": "bert-base-uncased"
+      }
+    },
+    {
+      "model_type": "TEXT_SP",
+      "model_params" : {
+        "model_name": "bert_base",
+        "model_pretrained": "bert-base-uncased"
+      }
+    },
+    {
+      "model_type": "TEXT_MLM",
+      "model_params" : {
+        "model_name": "bert_large",
+        "model_pretrained": "bert-large-uncased"
+      }
+    },
+    {
+      "model_type": "TEXT_SP",
+      "model_params" : {
+        "model_name": "bert_large",
+        "model_pretrained": "bert-large-uncased"
+      }
+    },
+    {
+      "model_type": "TEXT_MLM",
+      "model_params" : {
+        "model_name": "distil_bert",
+        "model_pretrained": "distilbert-base-uncased"
+      }
+    },
+    {
+      "model_type": "TEXT_MLM",
+      "model_params" : {
+        "model_name": "roberta_base",
+        "model_pretrained": "roberta-base"
+      }
+    },
+    {
+      "model_type": "TEXT_SP",
+      "model_params" : {
+        "model_name": "roberta_base",
+        "model_pretrained": "roberta-base"
+      }
+    },
+    {
+      "model_type": "TEXT_MLM",
+      "model_params" : {
+        "model_name": "roberta_large",
+        "model_pretrained": "roberta-large"
+      }
+    },
+    {
+      "model_type": "TEXT_SP",
+      "model_params" : {
+        "model_name": "roberta_large",
+        "model_pretrained": "roberta-large"
+      }
+    },
+    {
+      "model_type": "TEXT_MLM",
+      "model_params" : {
+        "model_name": "distil_roberta",
+        "model_pretrained": "distilroberta-base"
+      }
+    },
+    {
+      "model_type": "TEXT_SP",
+      "model_params" : {
+        "model_name": "distil_roberta",
+        "model_pretrained": "distilroberta-base"
+      }
+    },
+    {
+      "model_type": "TEXT_SP",
+      "model_params" : {
+        "model_name": "ernie_base",
+        "model_pretrained": "nghuyong/ernie-2.0-base-en"
+      }
+    },
+    {
+      "model_type": "TEXT_SP",
+      "model_params" : {
+        "model_name": "ernie_large",
+        "model_pretrained": "nghuyong/ernie-2.0-large-en"
+      }
+    },
+    {
+      "model_type": "TEXT_SP",
+      "model_params" : {
+        "model_name": "sentence_transformers",
+        "model_pretrained": "sentence-transformers/all-MiniLM-L6-v2"
+      }
+    },
+    {
+      "model_type": "CLIP_SP",
+      "model_params" : {
+        "model_name": "CLIP",
+        "model_pretrained": "openai/clip-vit-base-patch32"
+      }
+    },
+    {
+      "model_type": "CLIP_SP",
+      "model_params" : {
+        "model_name": "CLIP_LAION_HUGE",
+        "model_pretrained": "laion/CLIP-ViT-H-14-laion2B-s32B-b79K"
+      }
+    },
+    {
+      "model_type": "CLIP_SP",
+      "model_params" : {
+        "model_name": "CLIP_LAION_LARGE",
+        "model_pretrained": "laion/CLIP-ViT-L-14-laion2B-s32B-b82K"
+      }
+    },
+    {
+      "model_type": "FLAVA_SP",
+      "model_params" : {
+        "model_name": "FLAVA",
+        "model_pretrained": "facebook/flava-full"
+      }
+    }
+  ]
+}
