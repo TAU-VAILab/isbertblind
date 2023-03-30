@@ -1,0 +1,6 @@
+sentence,gt,options
+I MASK not a fellow ; I am a young lady ! ',am,"['am', 'born', 'find', 'picking', 'pricked', 'said', 'sat', 'seems', 'streamed', 'thinking']"
+"` Oh , yes , your Majesty , ' MASK he , ` give me as much as my servant can carry , and I will give up your daughter . '",answered,"['Do', 'answered', 'began', 'commanded', 'cried', 'free', 'like', 'put', 'stood', 'succeed']"
+"In the Court there were two young fellows , one of eighteen years old , the other of nineteen , who were very fond of playing chess , and often MASK long inside playing at it .",sat,"['came', 'come', 'deal', 'hoist', 'playing', 'put', 'sat', 'see', 'took', 'went']"
+"He MASK all , -- Thorn for the camel , fodder for the kine , And mother 's heart for sleepy head , O little son of mine !",made,"['Saw', 'Sitting', 'cheat', 'come', 'found', 'given', 'live', 'made', 'said', 'tricked']"
+"There was a large mushroom growing near her , about the same height as herself ; and when she had looked under it , and on both sides of it , and behind it , it occurred to her that she might as well look and MASK what was on the top of it .",see,"['Let', 'drink', 'fanned', 'find', 'jumped', 'looking', 'see', 'tried', 'waiting', 'whereupon']"

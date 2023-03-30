@@ -1,0 +1,29 @@
+{
+  "setup_params": {
+    "experiment_name": "cbt_v",
+    "output_dir": "./output/",
+    "dataset_path": "./datasets/cbt_v_sample.csv",
+    "device": "cuda",
+    "task": "cloze"
+  },
+  "prompts" : [
+    ""
+  ],
+  "models": [
+    {
+      "model_type": "TEXT_MLM",
+      "model_params" : {
+        "model_name": "bert_base",
+        "model_pretrained": "bert-base-uncased",
+        "device": "cpu"
+      }
+    },
+    {
+      "model_type": "CLIP_SP",
+      "model_params": {
+        "model_name": "CLIP",
+        "model_pretrained": "openai/clip-vit-base-patch32"
+      }
+    }
+  ]
+}
