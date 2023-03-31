@@ -1,0 +1,2 @@
+from probing.text_model_sp import TextStroopProbe
+from probing.multimodal_model_sp import CLIPStroopProbe, FLAVAStroopProbe
